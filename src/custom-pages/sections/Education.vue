@@ -6,7 +6,7 @@
     </h1>
     <div class="d-flex justify-content-between flex-wrap">
       <div>
-        <h4 class="text-uppercase font-weight-bold">
+        <h4 class="text-uppercase font-weight-bold sub-color">
           HCM City University Foreign Language – Information Technology
         </h4>
         <h5 class="sub-color font-weight-bold">
@@ -20,12 +20,11 @@
         </h5>
       </div>
     </div>
-    <div class="text-center">
-      <hr class="w-50" />
+    <div class="text-center my-3 mx-auto w-50 half-hr">
     </div>
     <div class="d-flex justify-content-between flex-wrap">
       <div>
-        <h4 class="text-uppercase font-weight-bold">TOEIC IIG</h4>
+        <h4 class="text-uppercase font-weight-bold sub-color">TOEIC IIG</h4>
         <h5 class="sub-color font-italic">Score: 800</h5>
       </div>
       <div>

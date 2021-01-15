@@ -1,5 +1,5 @@
 <template>
-  <div class="container-resume">
+  <div class="container-resume" id="container_resume">
     <section id="about">
       <about></about>
     </section>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import About from "./sections/About.vue";
 import Education from "./sections/Education.vue";
 import WorkExperience from "./sections/WorkExperience.vue";
@@ -36,6 +37,22 @@ export default {
     Skill,
     Hobby,
     Project,
-  }
+  },
+  computed: {
+    ...mapGetters(["isDarkMode"]),
+  },
+  watch: {
+    isDarkMode(newVal, oldVal) {
+      let body = document.getElementById("body");
+      let containerResume = document.getElementById("container_resume");
+      if (newVal) {
+        containerResume.classList.add("dark-mode");
+        body.classList.add("dark-mode");
+      } else {
+        containerResume.classList.remove("dark-mode");
+        body.classList.remove("dark-mode");
+      }
+    },
+  },
 };
 </script>

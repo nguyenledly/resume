@@ -5,21 +5,14 @@
     :data-image="sidebarBackgroundImage"
     :style="sidebarStyle"
   >
-    <!-- <div class="logo">
-      <a href="#" class="simple-text logo-mini">
-        <div class="logo-img">
-          <img :src="imgLogo" alt="" />
+    <div class="logo" title="Dark Mode">
+      <div class="simple-text logo-mini m-0 d-flex align-content-center justify-content-center" @click="toggleDarkMode()">
+        <div class="logo-img d-flex align-items-center justify-content-center" :class="{'dark-mode':isDarkMode}">
+          <i v-if="isDarkMode" class="md-icon md-icon-font">dark_mode</i>
+          <i v-else class="md-icon md-icon-font black-color">brightness_5</i>
         </div>
-      </a>
-
-      <a
-        href="https://www.creative-tim.com/product/vue-material-dashboard"
-        target="_blank"
-        class="simple-text logo-normal"
-      >
-        {{ title }}
-      </a>
-    </div>-->
+      </div>
+    </div>
     <!-- <div class="logo">
       <md-button class="md-button md-just-icon md-round">
         <small>EN</small>
@@ -43,6 +36,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 import SidebarLink from "./SidebarLink.vue";
 
 export default {
@@ -52,7 +46,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD"
+      default: ""
     },
     sidebarBackgroundImage: {
       type: String,
@@ -84,7 +78,13 @@ export default {
       autoClose: this.autoClose
     };
   },
+  methods:{
+    toggleDarkMode(){
+      this.$store.dispatch('toggleDarkMode');
+    }
+  },
   computed: {
+    ...mapGetters(['isDarkMode']),
     sidebarStyle() {
       return {
         backgroundImage: `url(${this.sidebarBackgroundImage})`
@@ -105,6 +105,7 @@ export default {
   align-items: center;
 }
 .logo {
+  cursor: pointer;
   display: flex;
   justify-content: space-around;
   align-items: center;

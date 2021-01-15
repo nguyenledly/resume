@@ -1,19 +1,4 @@
-// =========================================================
-// * Vue Material Dashboard - v1.4.0
-// =========================================================
-//
-// * Product Page: https://www.creative-tim.com/product/vue-material-dashboard
-// * Copyright 2019 Creative Tim (https://www.creative-tim.com)
-// * Licensed under MIT (https://github.com/creativetimofficial/vue-material-dashboard/blob/master/LICENSE.md)
-//
-// * Coded by Creative Tim
-//
-// =========================================================
-//
-// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+/* eslint-disable */
 require("bootstrap-vue");
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -32,11 +17,27 @@ import Notifications from "./components/NotificationPlugin";
 import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
+import MyResume from "./custom-pages/MyResume.vue"
 
+// Resume Store
+import resumeStore from './custom-pages/javascript/store/store';
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes
-  linkExactActiveClass: "nav-item active"
+  linkExactActiveClass: "nav-item active",
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        behavior: 'smooth',
+      };
+    }
+    return { x: 0, y: 0 };
+  }
 });
 
 Vue.prototype.$Chartist = Chartist;
@@ -47,12 +48,14 @@ Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
+Vue.use(MyResume)
 
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
   render: h => h(App),
   router,
+  store: resumeStore,
   data: {
     Chartist: Chartist
   }

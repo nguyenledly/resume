@@ -260,8 +260,8 @@
         left: -250px;
     }
     .nav-open .main-panel{
-        left: 0;
-        @include transform-translate-x(-260px);
+        left: -260px;
+        // @include transform-translate-x(-260px);
     }
 
     .nav-open .sidebar{

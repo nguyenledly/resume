@@ -1,6 +1,23 @@
-$mainColor: #3b833b;
-$subColor: #707070;
-$sub2Color: #494848;
+$mainColor: #3b833b !important;
+$subColor: #707070 !important;
+$sub2Color: #494848 !important;
+
+$mainDarkColor: #61ad61 !important;
+$subDarkColor: #d6d6d6 !important;
+$sub2DarkColor: #fbfbfb !important;
+$darkColor : #202020;
+body {
+  &.dark-mode {
+    background-color: $darkColor;
+  }
+  transition: all 1s ease-in-out;
+}
+.logo-img{
+  &.dark-mode{
+    background-color: $darkColor !important;
+  }
+  transition: all 1s ease-in-out;
+}
 .container-resume {
   section {
     padding: 20px;
@@ -20,16 +37,16 @@ $sub2Color: #494848;
     font-size: 1rem;
   }
   .main-color {
-    color: $mainColor !important;
+    color: $mainColor;
   }
   .sub-color {
-    color: $subColor !important;
+    color: $subColor;
   }
   .sub2-color {
-    color: $sub2Color !important;
+    color: $sub2Color;
   }
   .bg-main-color {
-    background-color: $mainColor !important;
+    background-color: $mainColor;
   }
   .icon-container {
     display: flex;
@@ -48,30 +65,34 @@ $sub2Color: #494848;
       font-size: 4em;
     }
   }
+  .half-hr {
+    border-bottom: thin solid $subColor;
+  }
 
   margin: auto;
   @media (min-width: 992px) {
     margin: 0px 20%;
   }
+  &.dark-mode {
+    .vue-typer .custom.char.typed {
+      color: $sub2DarkColor;
+    }
+    .main-color {
+      color: $mainDarkColor;
+    }
+    .sub-color {
+      color: $subDarkColor;
+    }
+    .sub2-color {
+      color: $sub2DarkColor;
+    }
+    .bg-main-color {
+      background-color: $mainDarkColor;
+    }
+  }
+  transition: all 1s ease-in-out;
 }
 
-@-webkit-keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100px);
-    transform: translateY(-100px);
-  }
-}
-@keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100px);
-    transform: translateY(-100px);
-  }
+.black-color {
+  color: $darkColor !important;
 }
